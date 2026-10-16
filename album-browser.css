@@ -1,0 +1,13 @@
+.classified-album-head{flex-wrap:wrap;row-gap:12px}
+.album-category-tabs{flex:0 0 100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding-top:4px}
+.album-category-tabs button{display:flex;justify-content:center;align-items:center;gap:7px;min-height:43px;padding:10px 8px;background:var(--soft-pink);border:1px solid transparent;border-radius:11px;color:var(--muted);font-size:13px;transition:background .15s,color .15s}
+.album-category-tabs button.active{background:var(--rose);border-color:var(--rose);color:#fff;font-weight:600}
+.album-category-tabs button:hover:not(.active){border-color:var(--line);color:var(--rose)}
+.album-category-tabs button:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.album-category-tabs button small{font-size:10px;line-height:1;min-width:20px;padding:4px 5px;background:#ffffff90;border-radius:12px;color:var(--rose)}
+.album-category-tabs button.active small{background:#ffffff30;color:#fff}
+.album-category-content{min-height:130px}
+.classified-album-modal{padding-top:0;isolation:isolate}
+.classified-album-modal .album-sticky-head{top:0;padding-top:33px;background:inherit}
+@media(max-width:540px){.album-category-tabs{gap:5px}.album-category-tabs button{gap:4px;padding:9px 4px;font-size:12px;min-height:41px}.album-category-tabs button small{font-size:9px;min-width:17px;padding:4px}.classified-album-modal .album-sticky-head{top:0}}
+@media(prefers-reduced-motion:reduce){.album-category-tabs button{transition:none}}

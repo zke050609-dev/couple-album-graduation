@@ -1,0 +1,46 @@
+body.trip-cinematic-active{overflow:hidden}
+.trip-cinematic{position:fixed;inset:0;z-index:90;overflow:hidden;perspective:1400px;cursor:pointer;opacity:0;background:#fbe8ee;transition:opacity .25s ease}
+.trip-cinematic.is-active{opacity:1}
+.trip-cinematic.is-leaving{opacity:0;pointer-events:none}
+.trip-cinematic-sky{position:absolute;inset:-8%;overflow:hidden;background:radial-gradient(circle at 72% 28%,#fff8e8 0 6%,#ffd6bd66 17%,transparent 37%),linear-gradient(155deg,#f8c8d7 0%,#f8dce2 38%,#fbebe2 72%,#fff7e9 100%);filter:saturate(.88)}
+.trip-cinematic-sky:before{content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 8%,#fff9 31%,transparent 48%);transform:translateX(-55%);animation:trip-sky-light 2.1s cubic-bezier(.2,.62,.2,1) both}
+.trip-cinematic-sky:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 18% 86%,#fff 0 7%,transparent 20%),radial-gradient(ellipse at 48% 96%,#fffdfb 0 12%,transparent 28%),radial-gradient(ellipse at 91% 80%,#fff8f5 0 9%,transparent 25%);opacity:.78;filter:blur(12px)}
+.trip-cinematic-sky>i{position:absolute;width:36vw;height:12vw;min-height:90px;border-radius:50%;background:#fff9;filter:blur(25px);opacity:.72}
+.trip-cinematic-sky>i:nth-child(1){left:-8%;top:18%;transform:rotate(-8deg);animation:trip-cloud-drift 2.2s ease-out both}
+.trip-cinematic-sky>i:nth-child(2){right:-7%;top:55%;width:42vw;opacity:.58;animation:trip-cloud-drift 2.2s .08s ease-out reverse both}
+.trip-cinematic-sky>i:nth-child(3){left:31%;bottom:-4%;width:48vw;opacity:.7;animation:trip-cloud-drift 2.2s .04s ease-out both}
+.trip-cinematic-route{position:absolute;z-index:2;left:25%;top:44%;width:61%;height:150px;transform:rotate(-7deg);pointer-events:none}
+.trip-cinematic-route span{display:block;width:100%;height:100%;border-top:2px dashed #cc71878c;border-radius:50%;transform-origin:left center;opacity:0;filter:drop-shadow(0 1px 5px #fff)}
+.trip-cinematic-arrow{position:absolute;z-index:4;width:52px;height:52px;margin:-26px 0 0 -10px;display:grid;place-items:center;color:#c75370;font:300 34px/1 Arial,sans-serif;text-shadow:0 7px 18px #93465d4a;will-change:transform,opacity}
+.trip-cinematic-plane{position:absolute;z-index:6;left:0;top:0;width:clamp(420px,42vw,650px);aspect-ratio:1200/654;opacity:0;will-change:transform,opacity,filter;transform-style:preserve-3d;pointer-events:none}
+.trip-cinematic-plane img{display:block;width:100%;height:100%;object-fit:contain;filter:saturate(.98)}
+.trip-cinematic-propeller{position:absolute;left:1.1%;top:4%;width:9%;height:91%;border-radius:50%;background:linear-gradient(90deg,transparent,#fff7 42%,#fff2 55%,transparent);filter:blur(4px);opacity:.18;transform-origin:center;animation:trip-propeller-pulse .09s linear infinite}
+.trip-cinematic-plane:after{content:"";position:absolute;left:7%;top:48%;width:28%;height:9%;border-radius:50%;background:#d05b783d;filter:blur(14px);transform:translate(-100%,-50%);opacity:.55}
+.trip-cinematic-paper-stage{position:absolute;z-index:5;left:50%;top:50%;width:min(520px,calc(100vw - 38px));transform:translate(-50%,-50%);transform-style:preserve-3d}
+.trip-cinematic-paper{position:relative;width:100%;min-height:390px;padding:29px 31px 24px;border:1px solid #ecd5da;border-radius:18px;background:#fffdfc;color:var(--ink);box-shadow:0 38px 90px #7039484d,0 1px 0 #fff inset;opacity:0;transform-origin:50% 0;will-change:transform,opacity}
+.trip-cinematic-paper:before{content:"";position:absolute;inset:11px;border:1px dashed #efc5cf;border-radius:11px;pointer-events:none}
+.trip-cinematic-paper:after{content:"";position:absolute;left:50%;top:-10px;width:92px;height:20px;background:#f5d9bcba;transform:translateX(-50%) rotate(-2deg);box-shadow:0 3px 8px #7f58401a}
+.trip-cinematic-paper-inner{position:relative;transition:opacity .22s ease,transform .22s ease}
+.trip-cinematic-paper header,.trip-cinematic-paper footer{display:flex;align-items:center;justify-content:space-between}
+.trip-cinematic-paper header{padding-bottom:15px;border-bottom:1px solid #f1e1e4}
+.trip-cinematic-paper header span{color:var(--rose);font-size:10px;font-weight:700;letter-spacing:.22em}
+.trip-cinematic-paper header i{color:var(--rose);font:normal 26px/1 Georgia,serif}
+.trip-cinematic-paper>div>p{margin:20px 0 3px;color:var(--rose);font-size:11px;letter-spacing:.06em}
+.trip-cinematic-paper h3{margin:0;font-family:"Ma Shan Zheng";font-size:44px;font-weight:400}
+.trip-cinematic-paper blockquote{margin:9px 0 0;color:#92777f;font-family:"Ma Shan Zheng";font-size:19px}
+.trip-cinematic-progress{margin:25px 0 20px}
+.trip-cinematic-progress>span{display:flex;justify-content:space-between;color:#9d858c;font-size:11px}
+.trip-cinematic-progress b{color:var(--rose)}
+.trip-cinematic-progress>i{display:block;height:6px;margin-top:8px;overflow:hidden;border-radius:5px;background:#f5e6e9}
+.trip-cinematic-progress em{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#f1a1b1,#d65f7b)}
+.trip-cinematic-paper footer{padding-top:15px;border-top:1px dashed #ecd2d8;color:#a58a91;font-size:10px}
+.trip-cinematic-paper footer b{color:#b17b56;font-family:"Ma Shan Zheng";font-size:17px;font-weight:400}
+.trip-cinematic-skip{position:absolute;z-index:8;left:50%;bottom:4vh;transform:translateX(-50%);color:#9e7581;font-size:11px;letter-spacing:.13em;text-shadow:0 1px #fff9;transition:opacity .18s}
+.trip-cinematic.is-handing-off .trip-cinematic-paper-inner{opacity:0;transform:scale(.985)}
+.trip-cinematic.is-handing-off .trip-cinematic-skip{opacity:0}
+.trip-cinematic.is-skipped{transition-duration:.09s}
+@keyframes trip-sky-light{0%{transform:translateX(-65%)}100%{transform:translateX(75%)}}
+@keyframes trip-cloud-drift{0%{transform:translateX(-6%) rotate(-6deg)}100%{transform:translateX(13%) rotate(-2deg)}}
+@keyframes trip-propeller-pulse{0%,100%{transform:scaleY(.94);opacity:.15}50%{transform:scaleY(1.05);opacity:.28}}
+@media(max-width:620px){.trip-cinematic-plane{width:470px}.trip-cinematic-paper-stage{top:52%;width:min(430px,calc(100vw - 26px))}.trip-cinematic-paper{min-height:350px;padding:25px 23px 21px}.trip-cinematic-paper h3{font-size:38px}.trip-cinematic-route{left:18%;width:72%}.trip-cinematic-skip{bottom:3vh;white-space:nowrap}}
+@media(prefers-reduced-motion:reduce){.trip-cinematic{display:none}}

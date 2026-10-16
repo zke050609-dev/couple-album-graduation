@@ -1,0 +1,8 @@
+{
+  "name": "couple-album-graduation",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Multi-tenant collaborative private media notebook",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": { "start": "node server.cjs", "check": "node --check server.cjs" }
+}

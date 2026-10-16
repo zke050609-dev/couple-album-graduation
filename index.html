@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>情侣相册 · 毕设空白版</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/phosphor/regular/style.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="enhancements.css" />
+  <link rel="stylesheet" href="map.css" />
+  <link rel="stylesheet" href="map-interactions.css" />
+  <link rel="stylesheet" href="map-fixes.css" />
+  <link rel="stylesheet" href="map-labels.css" />
+  <link rel="stylesheet" href="form-fixes.css" />
+  <link rel="stylesheet" href="album-model.css" />
+  <link rel="stylesheet" href="album-polish.css" />
+  <link rel="stylesheet" href="media-support.css?v=6" />
+  <link rel="stylesheet" href="timeline-travel.css?v=7" />
+  <link rel="stylesheet" href="travel-plans.css" />
+  <link rel="stylesheet" href="home-polish.css" />
+  <link rel="stylesheet" href="trip-cinematic.css" />
+  <link rel="stylesheet" href="themes.css" />
+  <link rel="stylesheet" href="cloud-sync.css" />
+  <link rel="stylesheet" href="usability-update.css?v=8" />
+  <link rel="stylesheet" href="album-browser.css?v=10" />
+  <link rel="stylesheet" href="professional.css?v=2" />
+  <link rel="stylesheet" href="memory-assistant.css?v=2" />
+  <link rel="stylesheet" href="library-groups.css?v=1" />
+  <link rel="stylesheet" href="semantic-search.css?v=1" />
+</head>
+<body>
+  <main id="app" class="app-shell hidden">
+    <aside class="sidebar">
+      <a class="brand" href="#home"><span class="brand-mark">♡</span><span>我们的<br><i>小宇宙</i></span></a>
+      <nav id="nav" class="nav">
+        <button class="nav-item active" data-page="home"><span>⌂</span> 首页</button>
+        <button class="nav-item" data-page="map"><span>⌖</span> 足迹地图</button>
+        <button class="nav-item" data-page="timeline"><span>⌇</span> 时光轴</button>
+        <button class="nav-item" data-page="albums"><span>▧</span> 相册集</button>
+        <button class="nav-item" data-page="diary"><span>✎</span> 情侣日记</button>
+        <button class="nav-item" data-page="plans"><span>✈</span> 旅游计划</button>
+        <button class="nav-item" data-page="anniversaries"><span>♧</span> 纪念日</button>
+        <button class="nav-item" data-page="memory"><span>✦</span> 回忆盒</button>
+        <button class="nav-item" data-page="landmarks"><span>♙</span> 地标图标</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="random-memory" class="random-btn">✦ 随机抽一张城市照片</button>
+        <button class="nav-item settings-link" data-page="settings"><span>⚙</span> 管理设置</button>
+      </div>
+    </aside>
+    <section class="content">
+      <header class="mobile-head"><button id="mobile-menu">☰</button><span>♡ 我们的小宇宙</span><button id="mobile-add">＋</button></header>
+      <div id="page-root"></div>
+    </section>
+    <button id="fab" class="fab" title="新建回忆">＋</button>
+  </main>
+
+  <section id="lock-screen" class="lock-screen">
+    <div class="paper-clip clip-one"></div><div class="paper-clip clip-two"></div>
+    <div class="lock-card">
+      <div class="lock-doodle">♡</div>
+      <p class="eyebrow">PRIVATE LITTLE WORLD</p>
+      <h1>欢迎回到<br><em>我们的手账</em></h1>
+      <p class="lock-copy">这里藏着两个人的每一次心动。</p>
+      <form id="unlock-form">
+        <label>The Beginning of love</label>
+        <div class="pin-inputs"><input inputmode="numeric" maxlength="1" aria-label="第1位密码"><input inputmode="numeric" maxlength="1" aria-label="第2位密码"><input inputmode="numeric" maxlength="1" aria-label="第3位密码"><input inputmode="numeric" maxlength="1" aria-label="第4位密码"></div>
+        <p id="pin-error" class="pin-error"></p>
+        <button class="primary wide" type="submit">打开回忆本 <span>→</span></button>
+      </form>
+    </div>
+    <span class="corner-note note-a">love you<br>to the moon</span><span class="corner-note note-b">♡ 2026</span>
+  </section>
+  <div id="modal-root"></div><div id="toast"></div>
+  <script src="app.js?v=8"></script>
+  <script src="assets/geo/offline-data.js"></script>
+  <script src="map.js"></script>
+  <script src="map-fixes.js"></script>
+  <script src="form-fixes.js?v=7"></script>
+  <script src="album-model.js?v=7"></script>
+  <script src="album-polish.js?v=7"></script>
+  <script src="media-support.js?v=7"></script>
+  <script src="timeline-travel.js?v=8"></script>
+  <script src="travel-plans.js?v=7"></script>
+  <script src="home-polish.js?v=8"></script>
+  <script src="trip-cinematic.js"></script>
+  <script src="themes.js?v=7"></script>
+  <script src="config.js"></script>
+  <script src="cloud-sync.js?v=7"></script>
+  <script src="page-drafts.js?v=7"></script>
+  <script src="album-browser.js?v=9"></script>
+  <script src="professional.js?v=8"></script>
+  <script src="memory-assistant.js?v=1"></script>
+  <script src="memory-workflow.js?v=1"></script>
+</body>
+</html>

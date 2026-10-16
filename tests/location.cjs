@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict');
+const{locateGPS,contains,enrichMetadata,backfillLocations}=require('../server/pro/location.cjs');
+assert.equal(locateGPS({lat:29.296215,lng:117.226962}).city,'景德镇市');
+assert.equal(locateGPS({lat:29.296215,lng:117.226962}).province,'江西省');
+assert.equal(locateGPS({lat:30.274,lng:120.155}).city,'杭州市');
+assert.equal(locateGPS({lat:32.0603,lng:118.7969}).city,'南京市');
+assert.equal(locateGPS({lat:39.9042,lng:116.4074}).city,'北京市');
+assert.equal(locateGPS({lat:31.2304,lng:121.4737}).city,'上海市');
+assert.equal(locateGPS({lat:29.563,lng:106.5516}).city,'重庆市');
+assert.equal(locateGPS({lat:51.5074,lng:-0.1278}),null);
+for(const gps of [null,{}, {lat:NaN,lng:120},{lat:91,lng:120},{lat:30,lng:181},{lat:'30',lng:120}])assert.equal(locateGPS(gps),null);
+const polygon={type:'Polygon',coordinates:[[[0,0],[10,0],[10,10],[0,10],[0,0]],[[3,3],[7,3],[7,7],[3,7],[3,3]]]};
+assert.equal(contains([2,2],polygon),true);assert.equal(contains([5,5],polygon),false);assert.equal(contains([11,2],polygon),false);assert.equal(contains([0,2],polygon),true);
+const multi={type:'MultiPolygon',coordinates:[polygon.coordinates,[[[20,20],[21,20],[21,21],[20,21],[20,20]]]]};assert.equal(contains([20.5,20.5],multi),true);
+const meta={capturedAt:'2026:09:22 19:21:00',gps:{lat:29.296215,lng:117.226962}};const next=enrichMetadata(meta);assert.ok(!meta.location);assert.equal(next.location.city,'景德镇市');assert.deepEqual(next.gps,meta.gps);assert.equal(enrichMetadata(next),next);
+const {DatabaseSync}=require('node:sqlite');const db=new DatabaseSync(':memory:');db.exec('CREATE TABLE media(id TEXT PRIMARY KEY,metadata TEXT)');db.prepare('INSERT INTO media VALUES(?,?)').run('existing',JSON.stringify(meta));db.prepare('INSERT INTO media VALUES(?,?)').run('no-gps','{}');assert.equal(backfillLocations(db),1);assert.equal(backfillLocations(db),0);assert.deepEqual(JSON.parse(db.prepare('SELECT metadata FROM media WHERE id=?').get('existing').metadata).gps,meta.gps);assert.equal(db.prepare('SELECT metadata FROM media WHERE id=?').get('no-gps').metadata,'{}');db.close();
+console.log('PASS offline locations: uploaded coordinate, provincial cities, municipalities, out-of-coverage and invalid GPS, polygon holes/edges/multipolygons, metadata preservation');

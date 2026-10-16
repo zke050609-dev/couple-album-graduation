@@ -1,0 +1,6 @@
+runtime/
+.env
+*.sqlite*
+node_modules/
+__pycache__/
+server/pro/tools/ffmpeg.exe
