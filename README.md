@@ -44,7 +44,7 @@
 
 - Node.js >= 22.13，使用内置 SQLite，无需安装 MySQL 或 Node 依赖。
 - Python 3.10+ 与 Pillow >= 10。当前电脑自动使用已安装的 Codex Python/Pillow；其他电脑运行 `python -m pip install -r server/pro/requirements.txt`，必要时设置 `PYTHON_PATH`。
-- 已附带 Windows x64 FFmpeg；其他系统用 `FFMPEG_PATH` 指定自行安装的版本。
+- GitHub 源码不附带 FFmpeg。视频处理需自行安装 FFmpeg 并加入 PATH，或用 `FFMPEG_PATH` 指定可执行文件。
 - 终端启动可运行 `node start-preview.cjs`，按 Ctrl+C 停止。
 
 环境变量说明见 `server/pro/.env.example`，该文件不会自动加载。
@@ -68,7 +68,6 @@
 | server/pro/worker.cjs / media-worker.py | 后台调度与媒体处理 |
 | tests/api.cjs | 独立临时数据库上的后端测试 |
 | docs/系统设计.md | 架构、数据库、关键技术和边界 |
-| docs/答辩演示.md | 演示流程和常见问题 |
 
 运行 `node tests/api.cjs` 、`node tests/location.cjs` 、`node tests/media-workflows.cjs` 、`node tests/semantic.cjs` 和 `node tests/space-delete.cjs`。它启动独立临时服务，创建合成账号后执行验证，结束时停止测试服务，不使用正式 `runtime/`。
 
