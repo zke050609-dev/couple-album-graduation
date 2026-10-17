@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference='Stop'
 $gradBundled=Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
-$gradPython=if(Test-Path -LiteralPath $gradBundled){$gradBundled}else{(Get-Command python -ErrorAction Stop).Source}
+$gradPython=if($env:PYTHON_PATH){$env:PYTHON_PATH}elseif(Test-Path -LiteralPath $gradBundled){$gradBundled}else{(Get-Command python -ErrorAction Stop).Source}
 $gradEnv=Join-Path $PSScriptRoot 'runtime\ai-env'
 $gradModel=Join-Path $PSScriptRoot 'runtime\ai\models\chinese-clip-vit-large-336'
 $gradWheels=Join-Path $PSScriptRoot 'runtime\ai\wheels'

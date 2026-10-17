@@ -1,5 +1,11 @@
-param([switch]$NoOpen)
+﻿param([switch]$NoOpen)
 $ErrorActionPreference='Stop'
+$installPathsFile=Join-Path $PSScriptRoot 'runtime\install-paths.json'
+if(Test-Path -LiteralPath $installPathsFile){
+  $installPaths=Get-Content -Raw -LiteralPath $installPathsFile | ConvertFrom-Json
+  if(Test-Path -LiteralPath $installPaths.python){$env:PYTHON_PATH=$installPaths.python}
+  if(Test-Path -LiteralPath $installPaths.ffmpeg){$env:FFMPEG_PATH=$installPaths.ffmpeg}
+}
 $gradUrl='http://127.0.0.1:8088'
 function Test-GradService {
   try { return (Invoke-RestMethod -Uri "$gradUrl/api/v2/health" -TimeoutSec 2).service -eq 'couple-album-graduation-v2' }
@@ -8,6 +14,7 @@ function Test-GradService {
 if (-not (Test-GradService)) {
   $gradNodeCommand=Get-Command node -ErrorAction SilentlyContinue
   $gradNode=if($gradNodeCommand){$gradNodeCommand.Source}else{Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe'}
+  if($installPaths -and (Test-Path -LiteralPath $installPaths.node)){$gradNode=$installPaths.node}
   if(-not (Test-Path -LiteralPath $gradNode)){throw '请先安装 Node.js 22.13 或更新版本。'}
   $gradRuntime=Join-Path $PSScriptRoot 'runtime'
   New-Item -ItemType Directory -Force -Path $gradRuntime | Out-Null
