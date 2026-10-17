@@ -1,4 +1,4 @@
-﻿param([switch]$NoOpen)
+param([switch]$NoOpen)
 $ErrorActionPreference='Stop'
 $gradUrl='http://127.0.0.1:8088'
 function Test-GradService {
@@ -21,7 +21,7 @@ if (-not (Test-GradService)) {
   if(-not $gradReady){throw "启动失败，请查看 $gradRuntime\server.stderr.log；8088 端口可能已被其他程序使用。"}
   Set-Content -LiteralPath (Join-Path $gradRuntime 'server.pid') -Value $gradProcess.Id
 }
-Write-Output "毕设网站已就绪：$gradUrl"
+Write-Output "回忆相册已就绪：$gradUrl"
 $gradWifi=[System.Net.NetworkInformation.NetworkInterface]::GetAllNetworkInterfaces() | Where-Object { $_.OperationalStatus -eq 'Up' -and $_.NetworkInterfaceType -eq 'Wireless80211' }
 foreach($gradInterface in $gradWifi){
   foreach($gradAddress in $gradInterface.GetIPProperties().UnicastAddresses){
